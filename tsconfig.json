@@ -11,14 +11,20 @@
     "allowSyntheticDefaultImports": true,
     "sourceMap": true,
     "resolveJsonModule": true,
+    "baseUrl": ".",
     "typeRoots": [
       "./node_modules/@types",
       "./node_modules/vuetify/types"
     ],
+    "paths": {
+      "@/*": [
+        "./assets/js/*"
+      ]
+    },
     "types": [
-      /*"webpack-env",
-      "jest",
-      "vuetify"*/
+      "node",
+      "webpack-env",
+      "vuetify"
     ],
     "lib": [
       "esnext",
