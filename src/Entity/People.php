@@ -35,6 +35,11 @@ class People
      */
     private $bookings;
 
+    /**
+     * @ORM\OneToOne(targetEntity="App\Entity\User", inversedBy="people", cascade={"persist", "remove"})
+     */
+    private $userid;
+
     public function __construct()
     {
         $this->bookings = new ArrayCollection();
@@ -93,6 +98,18 @@ class People
             $this->bookings->removeElement($booking);
             $booking->removePeople($this);
         }
+
+        return $this;
+    }
+
+    public function getUserid(): ?User
+    {
+        return $this->userid;
+    }
+
+    public function setUserid(?User $userid): self
+    {
+        $this->userid = $userid;
 
         return $this;
     }
