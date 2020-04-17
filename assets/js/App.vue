@@ -1,32 +1,72 @@
 <template>
-  <div id="app">
-    <div id="nav">
-      <router-link to="/">Home</router-link> |
-      <router-link to="/about">About</router-link>
-    </div>
-    <router-view/>
-  </div>
+  <v-app id="layout">
+    <v-navigation-drawer v-model="drawerRight" app clipped right>
+      <v-list dense>
+        <v-list-item @click.stop="right = !right">
+          <v-list-item-action>
+            <v-icon>mdi-exit-to-app</v-icon>
+          </v-list-item-action>
+          <v-list-item-content>
+            <v-list-item-title>Open Temporary Drawer</v-list-item-title>
+          </v-list-item-content>
+        </v-list-item>
+      </v-list>
+    </v-navigation-drawer>
+
+    <v-app-bar app clipped-right color="blue-grey" dark>
+      <v-app-bar-nav-icon @click.stop="drawer = !drawer" />
+      <v-toolbar-title>Toolbar</v-toolbar-title>
+      <v-spacer />
+      <v-app-bar-nav-icon @click.stop="drawerRight = !drawerRight" />
+    </v-app-bar>
+
+    <v-navigation-drawer v-model="drawer" app>
+      <v-list dense>
+        <v-list-item @click.stop="left = !left">
+          <v-list-item-action>
+            <v-icon>mdi-exit-to-app</v-icon>
+          </v-list-item-action>
+          <v-list-item-content>
+            <v-list-item-title>Open Temporary Drawer</v-list-item-title>
+          </v-list-item-content>
+        </v-list-item>
+      </v-list>
+    </v-navigation-drawer>
+
+    <v-navigation-drawer v-model="left" fixed temporary />
+
+    <v-content>
+      <v-container class="fill-height" fluid>
+        <router-view />
+      </v-container>
+    </v-content>
+
+    <v-navigation-drawer v-model="right" fixed right temporary />
+
+    <v-footer app color="blue-grey" class="white--text">
+      <span>Vuetify</span>
+      <v-spacer />
+      <span>&copy; 2019</span>
+    </v-footer>
+  </v-app>
 </template>
 
-<style lang="scss">
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-}
+<script lang="ts">
+import Vue from "vue";
+import Component from "vue-class-component";
 
-#nav {
-  padding: 30px;
+@Component({
+  name: "App"
+})
+export default class App extends Vue {
+  private drawer: any = null;
+  private drawerRight: any = null;
+  private right: boolean = false;
+  private left: boolean = false;
 
-  a {
-    font-weight: bold;
-    color: #2c3e50;
-
-    &.router-link-exact-active {
-      color: #42b983;
-    }
+  public constructor() {
+    super();
+    console.log(this.$vuetify);
   }
 }
-</style>
+</script>
