@@ -54,6 +54,7 @@
 <script lang="ts">
 import Vue from "vue";
 import Component from "vue-class-component";
+import axios from "axios";
 
 @Component({
   name: "App"
@@ -63,10 +64,5 @@ export default class App extends Vue {
   private drawerRight: any = null;
   private right: boolean = false;
   private left: boolean = false;
-
-  public constructor() {
-    super();
-    console.log(this.$vuetify);
-  }
 }
 </script>
