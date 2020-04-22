@@ -20,9 +20,7 @@ class BookingController extends AbstractController
             throw $this->createNotFoundException('The booking does not exist');
         };
 
-        return $this->json([
-            'booking' => $booking,
-        ]);
+        return $this->json($booking);
     }
 
     /**
@@ -32,9 +30,7 @@ class BookingController extends AbstractController
     {
         $bookings = $bookingService->list();
 
-        return $this->json([
-            'bookings' => $bookings,
-        ]);
+        return $this->json($bookings);
     }
 
     /**

@@ -1,0 +1,31 @@
+{
+  "layout":{
+    "btn": {
+      "rooms": "Salles"
+    }
+  },
+  "home": {
+    "btn" : {
+      "booking": "Réserver une salle"
+    }
+  },
+  "rooms": {
+    "nothing": "Aucune table à afficher",
+    "table": {
+      "headers" : {
+        "lib": "Libellé",
+        "desc": "Description",
+        "capacity": "Capacité d'accueil"
+      }
+    }
+  },
+  "room": {
+    "card": {
+      "capacity": "Ne peut accueillir personne | Peut accueillir une personne | Peut accueillir {count} personnes",
+      "btn" : {
+        "update": "Modifier",
+        "delete": "Supprimer"
+      }
+    }
+  }
+}

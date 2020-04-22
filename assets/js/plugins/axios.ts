@@ -1,15 +1,12 @@
-import Vue, { PluginObject } from 'vue';
-import Axios, { AxiosRequestConfig, AxiosInstance } from 'axios';
-import { VueConstructor } from 'vue/types/umd';
+
+import Vue from 'vue';
+import Axios, {AxiosStatic} from 'axios';
+declare var BASE_URL: any;
 
 // Full config:  https://github.com/axios/axios#request-config
-// axios.defaults.baseURL = process.env.baseURL || process.env.apiUrl || '';
-// axios.defaults.headers.common['Authorization'] = AUTH_TOKEN;
-// axios.defaults.headers.post['Content-Type'] = 'application/x-www-form-urlencoded';
 
-
-const config: AxiosRequestConfig = {
-  baseURL: window.location.pathname + 'api',
+const config = {
+  baseURL: BASE_URL + 'api',
 };
 const axios = Axios.create(config);
 
@@ -23,27 +20,14 @@ axios.interceptors.request.use(
     ,
 );
 
-const Plugin: PluginObject<any> = {
-  install: (vue) => { },
-};
-Plugin.install = (vue) => {
-  Vue.prototype.$axios = axios;
-  Object.defineProperties(Vue.prototype, {
-    $axios: {
-      get() {
-        return axios;
-      },
-    },
-  });
-};
-
 declare module 'vue/types/vue' {
-  // 3. Declare augmentation for Vue
-  interface Vue {
-    $axios: AxiosInstance
-  }
+    interface Vue {
+        $axios: AxiosStatic;
+    }
 }
 
-Vue.use(Plugin);
-
-export default Plugin;
+export default {
+  install() {
+      Vue.prototype.$axios = Axios.create(config);
+  },
+};

@@ -1,52 +1,39 @@
 <template>
   <v-app id="layout">
-    <v-navigation-drawer v-model="drawerRight" app clipped right>
-      <v-list dense>
-        <v-list-item @click.stop="right = !right">
-          <v-list-item-action>
-            <v-icon>mdi-exit-to-app</v-icon>
-          </v-list-item-action>
-          <v-list-item-content>
-            <v-list-item-title>Open Temporary Drawer</v-list-item-title>
-          </v-list-item-content>
-        </v-list-item>
-      </v-list>
-    </v-navigation-drawer>
-
     <v-app-bar app clipped-right color="blue-grey" dark>
-      <v-app-bar-nav-icon @click.stop="drawer = !drawer" />
-      <v-toolbar-title>Toolbar</v-toolbar-title>
+      <v-toolbar-title>
+        <router-link class="title" :to="{name: 'Home'}">
+          RoomReservation
+        </router-link>
+      </v-toolbar-title>
       <v-spacer />
-      <v-app-bar-nav-icon @click.stop="drawerRight = !drawerRight" />
+      <v-btn text :to="{name: 'Rooms'}">
+        {{$t('layout.btn.rooms')}}<v-icon>mdi-door-open</v-icon>
+      </v-btn>
+      <v-app-bar-nav-icon @click.stop="right = !right" class="hidden-sm-and-up"/>
     </v-app-bar>
 
-    <v-navigation-drawer v-model="drawer" app>
-      <v-list dense>
-        <v-list-item @click.stop="left = !left">
+    <v-content>
+      <router-view />
+    </v-content>
+
+    <v-navigation-drawer v-model="right" fixed right temporary >
+      <v-list>
+        <v-list-item :to="{name: 'Rooms'}">
           <v-list-item-action>
-            <v-icon>mdi-exit-to-app</v-icon>
+            <v-icon color="purple">mdi-door-open</v-icon>
           </v-list-item-action>
           <v-list-item-content>
-            <v-list-item-title>Open Temporary Drawer</v-list-item-title>
+            <v-list-item-title>{{$t('layout.btn.rooms')}}</v-list-item-title>
           </v-list-item-content>
         </v-list-item>
       </v-list>
     </v-navigation-drawer>
 
-    <v-navigation-drawer v-model="left" fixed temporary />
-
-    <v-content>
-      <v-container class="fill-height" fluid>
-        <router-view />
-      </v-container>
-    </v-content>
-
-    <v-navigation-drawer v-model="right" fixed right temporary />
-
     <v-footer app color="blue-grey" class="white--text">
-      <span>Vuetify</span>
+      <span>All-lala</span>
       <v-spacer />
-      <span>&copy; 2019</span>
+      <span>&copy; 2020</span>
     </v-footer>
   </v-app>
 </template>
@@ -66,3 +53,10 @@ export default class App extends Vue {
   private left: boolean = false;
 }
 </script>
+
+<style scoped>
+.title {
+  color: inherit;
+  text-decoration: inherit;
+}
+</style>

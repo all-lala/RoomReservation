@@ -19,9 +19,7 @@ class PeopleController extends AbstractController
             throw $this->createNotFoundException('The people does not exist');
         };
 
-        return $this->json([
-            'people' => $people,
-        ]);
+        return $this->json($people);
     }
 
     /**
@@ -31,8 +29,6 @@ class PeopleController extends AbstractController
     {
         $peoples = $peopleService->list();
 
-        return $this->json([
-            'peoples' => $peoples,
-        ]);
+        return $this->json($peoples);
     }
 }
