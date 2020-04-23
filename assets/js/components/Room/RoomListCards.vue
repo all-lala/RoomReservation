@@ -1,7 +1,7 @@
 <template>
   <v-row>
-    <v-col v-for="room in rooms" :key="room.lib">
-      <RoomCard :room="room" />
+    <v-col v-for="room in rooms" :key="room.id">
+      <RoomCard :room="room" @show="$emit('show', room.id)" @remove="$emit('remove', room)" />
     </v-col>
   </v-row>
 </template>

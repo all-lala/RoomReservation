@@ -10,7 +10,17 @@
     }
   },
   "rooms": {
-    "nothing": "Aucune table à afficher",
+    "title": "Gestion des salles",
+    "add": "Ajouter",
+    "nothing": "Aucune salle à afficher",
+    "modalRemove":{
+      "title": "Suppression d'une salle",
+      "message": "Voulez vous réellement supprimer la salle \"{lib}\" ?",
+      "btn" : {
+        "cancel": "Annuler",
+        "valid": "Confirmer"
+      }
+    },
     "table": {
       "headers" : {
         "lib": "Libellé",
@@ -20,10 +30,48 @@
     }
   },
   "room": {
+    "loading": {
+      "base" : "Chargement en cours.",
+      "add" : "Ajout de la salle en cours.",
+      "save" : "Sauvegarde des modifications de la salle."
+    },
+    "form": {
+      "titleCreate": "Création d'une nouvelle salle",
+      "titleUpdate": "Mise à jour de la salle {lib}",
+      "lib": "Libellé",
+      "desc": "Description de la salle",
+      "capacity": "Capacité d'accueil",
+      "btn": {
+        "add": "Ajouter",
+        "update": "Sauvegarder",
+        "cancel": "Annuler"
+      },
+      "validator" : {
+        "lib": {
+          "required" : "Le libellé de la salle est requis.",
+          "max": "Le libellé ne peut pas faire plus de {length} caractères."
+        },
+        "desc": {
+          "max": "La description ne peut pas faire plus de {length} caractères."
+        },
+        "capacity": {
+          "min": "la capacité doit être supérieur à {min}."
+        }
+      }
+    },
+    "detail": {
+      "title": "Fiche de la salle {lib}",
+      "lib": "Libellé",
+      "desc": "Description de la salle",
+      "capacity": "Capacité d'accueil",
+      "btn" : {
+        "change": "Modifier"
+      }
+    },
     "card": {
       "capacity": "Ne peut accueillir personne | Peut accueillir une personne | Peut accueillir {count} personnes",
       "btn" : {
-        "update": "Modifier",
+        "show": "Détails",
         "delete": "Supprimer"
       }
     }

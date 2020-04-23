@@ -24,10 +24,15 @@ const routes: Array<RouteConfig> = [
   {
     path: '/rooms',
     name: 'Rooms',
-    component: () => import('@/views/Rooms.vue')
+    component: () => import('@/views/Room/Rooms.vue')
+  },
+  {
+    path: '/room/:id/:action',
+    name: 'Room',
+    component: () => import('@/views/Room/Room.vue')
   }
 ]
-console.log(BASE_URL);
+
 const router = new VueRouter({
   mode: 'history',
   base: BASE_URL,

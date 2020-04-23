@@ -1,5 +1,5 @@
 import Vue from 'vue';
-import { Module, MutationTree, ActionTree } from 'vuex';
+import { Module, MutationTree, ActionTree, ActionContext } from 'vuex';
 import RoomInterface from '@/models/Room.interface';
 import Room from '@/models/Room.model';
 import Urls from '@/utils/Urls'
@@ -28,7 +28,10 @@ export default class RoomStore implements Module<RoomState, any>
   }
   
   actions: ActionTree<RoomState, any> = {
-    findRooms(context): void {
+    newRoom(context: ActionContext<RoomState, any>): void{
+      context.commit('room', new Room());
+    },
+    findRooms(context: ActionContext<RoomState, any>): void {
       const vue = new Vue();
       vue.$axios.get(Urls.ROOM)
         .then(response => {
@@ -40,17 +43,50 @@ export default class RoomStore implements Module<RoomState, any>
         })
         .catch(console.log)
     },
-    findRoom(context, id): void {
+    getRoom(context: ActionContext<RoomState, any>, id): void {
       const vue = new Vue();
       vue.$axios.get(`${Urls.ROOM}/${id}`)
         .then(response => {
           if(response && response.data){
-            context.dispatch('room', response.data)
+            context.commit('room', response.data);
           } else {
-            console.error(response)
+            console.error(response);
           }
         })
         .catch(console.log)
+    },
+    addRoom(context: ActionContext<RoomState, any>, room: RoomInterface): void {
+      const vue = new Vue();
+      vue.$axios.post(Urls.ROOM, room)
+      .then(response => {
+        if(response && response.data){
+          context.commit('room', response.data);
+        } else {
+          console.error(response);
+        }
+      })
+      .catch(console.log)
+    },
+    saveRoom(context: ActionContext<RoomState, any>, room: RoomInterface): void {
+      const vue = new Vue();
+      vue.$axios.patch(`${Urls.ROOM}/${room.id}`, room)
+      .then(response => {
+        if(response && response.data){
+          context.commit('room', response.data);
+        } else {
+          console.error(response);
+        }
+      })
+      .catch(console.log)
+    },
+    deleteRoom(context: ActionContext<RoomState, any>, id: number): void {
+      const vue = new Vue();
+      vue.$axios.delete(`${Urls.ROOM}/${id}`)
+      .then(response => {
+        context.dispatch('newRoom');
+        context.dispatch('findRooms');
+      })
+      .catch(console.log)
     }
   }
 }

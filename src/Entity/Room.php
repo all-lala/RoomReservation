@@ -24,9 +24,14 @@ class Room
     private $lib;
 
     /**
-     * @ORM\Column(type="string", length=255)
+     * @ORM\Column(name="description", type="string", length=255, nullable=true)
      */
-    private $detail;
+    private $desc;
+
+    /**
+     * @ORM\Column(type="integer")
+     */
+    private $capacity;
 
     /**
      * @ORM\OneToMany(targetEntity="App\Entity\Booking", mappedBy="room", orphanRemoval=true)
@@ -55,14 +60,26 @@ class Room
         return $this;
     }
 
-    public function getDetail(): ?string
+    public function getDesc(): ?string
     {
-        return $this->detail;
+        return $this->desc;
     }
 
-    public function setDetail(string $detail): self
+    public function setDesc(string $desc): self
     {
-        $this->detail = $detail;
+        $this->desc = $desc;
+
+        return $this;
+    }
+
+    public function getCapacity(): ?string
+    {
+        return $this->capacity;
+    }
+
+    public function setCapacity(string $capacity): self
+    {
+        $this->capacity = $capacity;
 
         return $this;
     }

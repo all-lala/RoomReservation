@@ -7,14 +7,14 @@
         </router-link>
       </v-toolbar-title>
       <v-spacer />
-      <v-btn text :to="{name: 'Rooms'}">
+      <v-btn text :to="{name: 'Rooms'}" class="hidden-sm-and-down">
         {{$t('layout.btn.rooms')}}<v-icon>mdi-door-open</v-icon>
       </v-btn>
-      <v-app-bar-nav-icon @click.stop="right = !right" class="hidden-sm-and-up"/>
+      <v-app-bar-nav-icon @click.stop="right = !right" class="hidden-md-and-up"/>
     </v-app-bar>
 
     <v-content>
-      <router-view />
+      <router-view :key="$route.fullPath"/>
     </v-content>
 
     <v-navigation-drawer v-model="right" fixed right temporary >

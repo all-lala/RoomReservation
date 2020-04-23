@@ -1,6 +1,6 @@
 export default interface RoomInterface
 {
-  id?: number;
+  id: number;
   lib: string;
   desc?: string;
   capacity: number;

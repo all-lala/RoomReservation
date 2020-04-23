@@ -19,6 +19,7 @@
       <v-btn
         color="warning"
         text
+        @click="$emit('remove')"
       >
         {{$t('room.card.btn.delete')}}
       </v-btn>
@@ -26,8 +27,9 @@
       <v-btn
         color="primary"
         text
+        @click="$emit('show')"
         >
-        {{$t('room.card.btn.update')}}
+        {{$t('room.card.btn.show')}}
       </v-btn>
     </v-card-actions>
   </v-card>
