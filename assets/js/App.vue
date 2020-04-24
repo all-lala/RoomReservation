@@ -7,9 +7,17 @@
         </router-link>
       </v-toolbar-title>
       <v-spacer />
-      <v-btn text :to="{name: 'Rooms'}" class="hidden-sm-and-down">
-        {{$t('layout.btn.rooms')}}<v-icon>mdi-door-open</v-icon>
-      </v-btn>
+      <v-btn-toggle
+          group
+          tile
+        >
+        <v-btn :to="{name: 'Rooms'}" class="hidden-sm-and-down">
+          {{$t('layout.btn.rooms')}}<v-icon>mdi-door-open</v-icon>
+        </v-btn>
+        <v-btn :to="{name: 'Peoples'}" class="hidden-sm-and-down">
+          {{$t('layout.btn.peoples')}}<v-icon>mdi-account-details-outline</v-icon>
+        </v-btn>
+      </v-btn-toggle>
       <v-app-bar-nav-icon @click.stop="right = !right" class="hidden-md-and-up"/>
     </v-app-bar>
 
@@ -19,12 +27,28 @@
 
     <v-navigation-drawer v-model="right" fixed right temporary >
       <v-list>
+        <v-list-item :to="{name: 'Home'}" exact>
+          <v-list-item-action>
+            <v-icon color="grey">mdi-home</v-icon>
+          </v-list-item-action>
+          <v-list-item-content>
+            <v-list-item-title>{{$t('layout.btn.home')}}</v-list-item-title>
+          </v-list-item-content>
+        </v-list-item>
         <v-list-item :to="{name: 'Rooms'}">
           <v-list-item-action>
             <v-icon color="purple">mdi-door-open</v-icon>
           </v-list-item-action>
           <v-list-item-content>
             <v-list-item-title>{{$t('layout.btn.rooms')}}</v-list-item-title>
+          </v-list-item-content>
+        </v-list-item>
+        <v-list-item :to="{name: 'Peoples'}">
+          <v-list-item-action>
+            <v-icon color="green">mdi-account-details-outline</v-icon>
+          </v-list-item-action>
+          <v-list-item-content>
+            <v-list-item-title>{{$t('layout.btn.peoples')}}</v-list-item-title>
           </v-list-item-content>
         </v-list-item>
       </v-list>

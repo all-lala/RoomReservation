@@ -8,7 +8,6 @@ use Doctrine\ORM\EntityManagerInterface;
 
 class RoomService
 {
-
   /**
    * @var RoomRepository
    */
@@ -89,6 +88,4 @@ class RoomService
       }
       $updatedRoom->setCapacity($room->capacity);
   }
-  
-
 }

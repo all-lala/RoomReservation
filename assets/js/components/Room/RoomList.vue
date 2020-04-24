@@ -62,7 +62,9 @@ export default class RoomList extends Vue {
 
   @roomStore.Action('deleteRoom') deleteRoom!: (id: number) => void;
 
-  @roomStore.State('rooms') rooms!: () => void; 
+  @roomStore.State('rooms') rooms!: () => void;
+  
+  private selected: string = 'RoomListCards';
 
   private showModalRemove = false;
 
@@ -76,8 +78,6 @@ export default class RoomList extends Vue {
     {text: "Cartes", value: 'RoomListCards'},
     {text: "Table", value: 'RoomListTable'}
   ]
-
-  private selected: string = 'RoomListCards'
 
   show(id: number) {
     this.$router.push({name: 'Room', params: {id: id.toString(), action: 'show'}})

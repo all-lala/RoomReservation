@@ -1,7 +1,9 @@
 {
   "layout":{
     "btn": {
-      "rooms": "Salles"
+      "home": "Accueil",
+      "rooms": "Salles",
+      "peoples": "Utilisateurs"
     }
   },
   "home": {
@@ -25,7 +27,8 @@
       "headers" : {
         "lib": "Libellé",
         "desc": "Description",
-        "capacity": "Capacité d'accueil"
+        "capacity": "Capacité d'accueil",
+        "actions" : "Actions"
       }
     }
   },
@@ -73,6 +76,62 @@
       "btn" : {
         "show": "Détails",
         "delete": "Supprimer"
+      }
+    }
+  },
+  "peoples": {
+    "title": "Gestion des utilisateurs",
+    "add": "Ajouter",
+    "nothing": "Aucun utilisateur à afficher",
+    "modalRemove":{
+      "title": "Suppression d'un utilisateur",
+      "message": "Voulez vous réellement supprimer l'utilisateur \"{name}\" ?",
+      "btn" : {
+        "cancel": "Annuler",
+        "valid": "Confirmer"
+      }
+    },
+    "table": {
+      "headers" : {
+        "name": "Nom prénom",
+        "email": "e-mail",
+        "actions": "Actions"
+      }
+    }
+  },
+  "people": {
+    "loading": {
+      "base" : "Chargement en cours.",
+      "add" : "Ajout de l'utilisateur' en cours.",
+      "save" : "Sauvegarde des modifications de l'utilisateur."
+    },
+    "form": {
+      "titleCreate": "Création d'un utilisater",
+      "titleUpdate": "Mise à jour de l'utilisateur {lastname}",
+      "lastname": "Nom de famille",
+      "firstname": "prénom",
+      "btn": {
+        "add": "Ajouter",
+        "update": "Sauvegarder",
+        "cancel": "Annuler"
+      },
+      "validator" : {
+        "lastname": {
+          "required" : "Le nom de famille est requis.",
+          "max": "Le nom de famille ne peut pas faire plus de {length} caractères."
+        },
+        "firstname": {
+          "required" : "Le prénom est requis.",
+          "max": "Le prénom ne peut pas faire plus de {length} caractères."
+        }
+      }
+    },
+    "detail": {
+      "title": "Fiche de l'utilisateur",
+      "lastname": "Nom de famille",
+      "firstname": "prénom",
+      "btn" : {
+        "change": "Modifier"
       }
     }
   }

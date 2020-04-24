@@ -30,6 +30,16 @@ const routes: Array<RouteConfig> = [
     path: '/room/:id/:action',
     name: 'Room',
     component: () => import('@/views/Room/Room.vue')
+  },
+  {
+    path: '/peoples',
+    name: 'Peoples',
+    component: () => import('@/views/People/Peoples.vue')
+  },
+  {
+    path: '/people/:id/:action',
+    name: 'People',
+    component: () => import('@/views/People/People.vue')
   }
 ]
 

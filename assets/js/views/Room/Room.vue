@@ -1,7 +1,6 @@
 <template>
   <v-container>
-    {{ roomActionClass }}
-    <div v-if="loading">{{ $t(loadingMsg) }}</div>
+    <div class="loading" v-if="loading"><h2>{{ $t(loadingMsg) }}</h2></div>
     <component v-else :is="roomActionClass" :room="room" @update="update"/>
   </v-container>
 </template>
@@ -86,5 +85,12 @@ export default class Room extends Vue {
 </script>
 
 <style scoped>
-
+.loading{
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-shadow: 2px 2px 5px grey;
+}
 </style>

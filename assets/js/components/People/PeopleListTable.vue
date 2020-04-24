@@ -2,9 +2,12 @@
   <div>
     <v-data-table
     :headers="headers"
-    :items="rooms"
+    :items="peoples"
     :items-per-page="5"
     >
+    <template v-slot:item.name="{ item }">
+        {{item.lastname}} {{item.fisrt}}
+    </template>
     <template v-slot:item.actions="{ item }">
       <v-icon
         small
@@ -28,30 +31,22 @@
 import { Vue, Component, Prop } from 'vue-property-decorator'
 
 @Component({
-  name: 'RoomListTable'
+  name: 'PeopleListTable'
 })
-export default class RoomListTable extends Vue{
+export default class PeopleListTable extends Vue{
   @Prop({default: () => []})
-  rooms!: [];
+  peoples!: [];
 
   private headers: any[] = [];
   
   mounted() {
     this.headers = [
       {
-        text: this.$t('rooms.table.headers.lib'),
-        value: 'lib'
+        text: this.$t('peoples.table.headers.name'),
+        value: 'name'
       },
       {
-        text: this.$t('rooms.table.headers.desc'),
-        value: 'desc'
-      },
-      {
-        text: this.$t('rooms.table.headers.capacity'),
-        value: 'capacity'
-      },
-      {
-        text: this.$t('rooms.table.headers.actions'),
+        text: this.$t('peoples.table.headers.actions'),
         value: 'actions'
       }
     ];
